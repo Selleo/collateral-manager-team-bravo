@@ -1,4 +1,3 @@
 class Tag < ApplicationRecord
-  has_many :collateral_tags
-  has_many :collaterals, through: :collateral_tags
+  has_and_belongs_to_many :collaterals
 end

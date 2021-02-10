@@ -3,7 +3,7 @@ class CreateCollaterals < ActiveRecord::Migration[6.0]
     create_table :collaterals do |t|
       t.string :name
       t.string :url
-      t.string :type
+      t.string :kind
 
       t.timestamps
     end

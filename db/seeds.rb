@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+10.times do
+  Collateral.create!({
+    name: Faker::IndustrySegments.industry,
+    kind: Faker::IndustrySegments.super_sector,
+    url: Faker::IndustrySegments.sector
+  })
+  Tag.create!({
+    name: Faker::Games::Pokemon.name,
+    kind: Faker::Games::Pokemon.move
+  })
+end
