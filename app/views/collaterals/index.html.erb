@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Collaterals</h1>
+<%= form_for @search, url: collaterals_path, method: :get do |f| %>
+	<%= f.text_field :query %>
+<% end %>
+
+ <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Url</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collaterals.each do |collateral| %>
+      <tr>
+        <td><%= collateral.name %></td>
+        <td><%= collateral.kind %></td>
+        <td><%= collateral.url %></td>
+          <% collateral.tags.each do |tag| %>
+            <td>
+              <%= tag.name %>
+              <%= tag.kind %>
+            </td>
+          <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

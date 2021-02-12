@@ -56,6 +56,7 @@ group :test do
   gem "timecop"
   gem 'webdrivers'
   gem "webmock"
+  gem "faker"
 end
 
 

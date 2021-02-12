@@ -112,6 +112,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faker (2.16.0)
+      i18n (>= 1.6, < 2)
     ffi (1.14.2)
     formulaic (0.4.1)
       activesupport
@@ -141,9 +143,13 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     msgpack (1.4.2)
     nio4r (2.5.4)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     oj (3.11.2)
@@ -327,6 +333,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -339,6 +346,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   factory_bot_rails
+  faker
   formulaic
   high_voltage
   inline_svg
