@@ -4,6 +4,7 @@ class CreateCollateralTags < ActiveRecord::Migration[6.0]
       t.integer :collateral_id, index: true
       t.integer :tag_id, index: true
       t.timestamps
+      t.integer :strength
     end
   end
 end

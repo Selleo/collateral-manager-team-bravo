@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_171636) do
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "strength"
     t.index ["collateral_id"], name: "index_collaterals_tags_on_collateral_id"
     t.index ["tag_id"], name: "index_collaterals_tags_on_tag_id"
   end
