@@ -5,7 +5,7 @@ class CollateralsController < ApplicationController
   def index
   		params[:search] ||= {query: ""} #set default query
         @search = Search.new params.require(:search).permit(:query)
-        binding.pry
+        # binding.pry
         @collaterals = @search.result
   end
 
