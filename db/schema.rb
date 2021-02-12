@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_124712) do
+ActiveRecord::Schema.define(version: 2021_02_10_171636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collaterals", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "collaterals_tags", force: :cascade do |t|
+    t.integer "collateral_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "strength"
+    t.index ["collateral_id"], name: "index_collaterals_tags_on_collateral_id"
+    t.index ["tag_id"], name: "index_collaterals_tags_on_tag_id"
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -28,6 +46,13 @@ ActiveRecord::Schema.define(version: 2021_02_05_124712) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
