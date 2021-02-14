@@ -1,0 +1,35 @@
+<h4>Find your:</h4>
+<h1>COLLATERALS</h1>
+
+<%= link_to "Search", collaterals_path %>
+<%= link_to "New Collateral", new_collateral_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Url</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collaterals_all_items.each do |collateral| %>
+      <tr>
+        <td><%= collateral.name %></td>
+        <td><%= collateral.kind %></td>
+        <td><%= collateral.url %></td>
+          <% collateral.tags.each do |tag| %>
+            <td>
+              <%= tag.name %>
+              <%= tag.kind %>
+            </td>
+          <% end %>
+		<td><%= link_to 'Show', collateral %></td>
+		<td><%= link_to 'Edit', edit_collateral_path(collateral) %></td>
+		<td><%= link_to 'Remove', collateral, method: :delete, data: { confirm: 'Are you sure you want to remove this collateral?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>Find me in app/views/pages/home.html.erb</p>
