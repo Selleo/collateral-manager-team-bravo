@@ -10,42 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_171636) do
+ActiveRecord::Schema.define(version: 2021_02_13_165235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "collateral_tags", force: :cascade do |t|
+    t.bigint "collateral_id", null: false
+    t.bigint "tag_id", null: false
+    t.integer "strength"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collateral_id"], name: "index_collateral_tags_on_collateral_id"
+    t.index ["tag_id"], name: "index_collateral_tags_on_tag_id"
+  end
+
   create_table "collaterals", force: :cascade do |t|
     t.string "name"
-    t.string "url"
     t.string "kind"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "collaterals_tags", force: :cascade do |t|
-    t.integer "collateral_id"
-    t.integer "tag_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "strength"
-    t.index ["collateral_id"], name: "index_collaterals_tags_on_collateral_id"
-    t.index ["tag_id"], name: "index_collaterals_tags_on_tag_id"
-  end
-
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer "priority", default: 0, null: false
-    t.integer "attempts", default: 0, null: false
-    t.text "handler", null: false
-    t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string "locked_by"
-    t.string "queue"
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -55,16 +40,6 @@ ActiveRecord::Schema.define(version: 2021_02_10_171636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
+  add_foreign_key "collateral_tags", "collaterals"
+  add_foreign_key "collateral_tags", "tags"
 end

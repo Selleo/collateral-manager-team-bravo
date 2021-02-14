@@ -1,4 +1,10 @@
 class Collateral < ApplicationRecord
-  has_and_belongs_to_many :tags
-  # has_many :tags, through: :collateral_tags
+has_many :collateral_tags, inverse_of: :collateral, dependent: :destroy
+has_many :tags, through: :collateral_tags
+accepts_nested_attributes_for :tags
+# accepts_nested_attributes_for :collateral_tags
+validates_presence_of   :name,
+						:url,
+						:kind
+
 end

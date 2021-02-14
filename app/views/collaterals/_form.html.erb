@@ -1,0 +1,15 @@
+<%= simple_form_for @collateral do |f| %>
+	<%= f.input :name, required: true %>
+	<%= f.input :url %>
+	<%= f.input :kind %>
+	<hr>
+	<%= f.simple_fields_for :tags do |tag| %>
+	   <%= render 'tag_fields', f: tag %>
+	   
+	<% end %>
+	<div class="link">
+		<%= link_to_add_association 'Add tags', f, :tags %>
+	</div>
+			
+	<%= f.button :submit %>
+<% end %>
