@@ -1,0 +1,12 @@
+<div class="nested-fields">
+<%= f.simple_fields_for :collateral_tags do |strength| %>
+		<%= render 'collateral_tag_fields', f: strength %>
+	<% end %>
+	<div>
+		<%= link_to_add_association 'Add strength', f, :collateral_tags %>
+	</div>
+	<%= f.input :strength %>
+		<div>
+			<%= link_to_remove_association 'Remove strength', f %>
+		</div>
+</div>

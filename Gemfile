@@ -59,5 +59,9 @@ group :test do
   gem "faker"
 end
 
+gem 'cocoon'
+#gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'jquery-rails'
+
 
 gem 'rack-timeout', group: :production
