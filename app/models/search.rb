@@ -13,9 +13,9 @@ class Search
 		where_query = ""
 		array.each do |item|
 			if !(array.last == item)
-				where_query<<"tags.name iLike '#{item}' OR "
+				where_query<<"tags.name iLike '%#{item}%' OR "
 			else 
-				where_query<<"tags.name iLike '#{item}'"
+				where_query<<"tags.name iLike '%#{item}%'"
 			end
 		end
 		Collateral.joins(:tags).where(where_query).group("collaterals.id")
