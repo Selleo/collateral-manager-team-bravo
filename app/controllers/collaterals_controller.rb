@@ -69,6 +69,6 @@ class CollateralsController < ApplicationController
                                                            :kind,
                                                            :_destroy
                                                           ]
-                                         )
+                                        )
     end
 end
