@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :tag_kind do
+    kind { "MyString" }
+  end
+
+  factory :collateral_kind do
+    kind { "MyString" }
+  end
+
   factory :collateral_tag do
     
   end

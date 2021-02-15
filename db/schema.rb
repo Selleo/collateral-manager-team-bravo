@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_165235) do
+ActiveRecord::Schema.define(version: 2021_02_15_173646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collateral_kinds", force: :cascade do |t|
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "collateral_tags", force: :cascade do |t|
     t.bigint "collateral_id", null: false
@@ -27,17 +33,22 @@ ActiveRecord::Schema.define(version: 2021_02_13_165235) do
 
   create_table "collaterals", force: :cascade do |t|
     t.string "name"
-    t.string "kind"
     t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tag_kinds", force: :cascade do |t|
+    t.string "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.string "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   add_foreign_key "collateral_tags", "collaterals"
