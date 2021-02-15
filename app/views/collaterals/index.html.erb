@@ -1,35 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Collaterals</h1>
-<%= form_for @search, url: collaterals_path, method: :get do |f| %>
-	<%= f.text_field :query %>
-<% end %>
+<div class="collaterals-search">
+  <div class="collaterals-search__input-wrapper">
+    <h1 class="collaterals-search__header">Search for collaterals</h1>
+    <div class="collaterals-search__input">
+      <%= form_for @search, url: collaterals_path, method: :get do |f| %>
+        <%= f.text_field :query%>
+      <% end %>
+    </div>
+  </div>
 
- <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Url</th>
-      <th>Tags</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="collaterals-search__all-results">
+    <h1 class="collaterals-search__header">Results:</h1>
     <% @collaterals.each do |collateral| %>
-      <tr>
-        <td><%= collateral.name %></td>
-        <td><%= collateral.kind %></td>
-        <td><%= collateral.url %></td>
-          <% collateral.tags.each do |tag| %>
-            <td>
-              <%= tag.name %>
-              <%= tag.kind %>
-            </td>
-          <% end %>
-
-      </tr>
+      <div class="collaterals-search__single <%= collateral.tags.size >= params[:search][:query].split(',').size ? '-all-tags' : ''%>" >
+          <h1 class="collaterals-search__name"><%= collateral.name %></h1>
+          <h3 class="collaterals-search__kind"><%= collateral.kind %></h3>
+          <p class="collaterals-search__link">
+            <%= link_to "Link", collateral.url %>
+          </p>
+          <div class="collaterals-search__tags">
+            <% collateral.tags.each do |tag| %>
+              <span class="collaterals-search__tag"><%= tag.kind %>: <%= tag.name %></span>
+            <% end %>
+          </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-
+  </div>
+</div>
