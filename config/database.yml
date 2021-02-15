@@ -1,21 +1,13 @@
-development: &default
-  adapter: postgresql
-  database: collateral_manager_development
-  encoding: utf8
-  min_messages: warning
-  pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
-  reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
-  timeout: 5000
+default: &default
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  pool:     10
+  template: template0
+  port: 5432
   username: zaprzemo
   password: zima
 
-test:
+development:
   <<: *default
-  database: collateral_manager_test
-
-production: &deploy
-  encoding: utf8
-  min_messages: warning
-  pool: <%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
-  timeout: 5000
-  url:  <%= ENV.fetch("DATABASE_URL", "") %>
+  database: collateral_manager_development
