@@ -7,7 +7,7 @@ end
 
 ruby "2.7.2"
 
-gem "autoprefixer-rails"
+# gem "autoprefixer-rails"
 gem "bootsnap", require: false
 gem 'bourbon', '>= 6.0.0'
 gem 'delayed_job_active_record'

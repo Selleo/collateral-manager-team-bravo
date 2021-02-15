@@ -13,6 +13,12 @@ $action-color--contrast: $white;
 // Background Colors
 $viewport-background-color: $white;
 
+$m-sm: 8px;
+$m-base: 16px;
+$m-md: 24px;
+$m-lg: 36px;
+$m-xl: 48px;
+
 :root {
   // Typography
   --font-family: system-ui, sans-serif;
