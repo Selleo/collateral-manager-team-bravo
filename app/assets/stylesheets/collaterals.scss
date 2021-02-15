@@ -1,0 +1,60 @@
+.collaterals-search {
+  padding: $m-lg;
+  
+  &__header {
+    font-size: 24px;
+    margin: $m-sm;
+  }
+
+  &__input-wrapper{
+    border-radius: $m-sm;
+    background-color: rgba(173, 216, 230, 0.2);
+    padding: $m-base;
+    margin-bottom: $m-lg;
+  }
+
+  &__input {
+    width: 80%;
+    margin: $m-md $m-sm;
+    text-overflow: ellipsis;
+    background-color: white;
+    input {
+      border-color: rgba(173, 216, 230, 0.3);
+    }
+  }
+
+  &__all-results {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__single {
+    border-radius: $m-sm;
+    margin: $m-sm;
+    padding: $m-base;
+    background-color: rgba(173, 216, 230, 0.3);
+    
+    &.-all-tags {
+      background-color: rgba(173, 216, 230, 0.7);
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+  }
+
+  &__kind {
+    font-size: 16px;
+  }
+
+  &__tag {
+    width: fit-content;
+    font-size: 12px;
+    background-color: #12345694;
+    border-radius: $m-base;
+    margin: 4px;
+    color: white;
+    padding: 4px 8px;
+  }
+}
