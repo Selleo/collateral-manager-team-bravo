@@ -1,10 +1,14 @@
 <%= simple_form_for @collateral do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 	<%= f.label :name %>:
 	<%= f.text_field :name, required: true %><br>
 	<%= f.label :url %>:
 	<%= f.text_field :url %> <br>
-	<%= f.label :kind %>:
-	<%= f.text_field :kind %><br>
+	<%= f.label :kind %>
+ 	<%= f.collection_select(:collateral_kind_id, CollateralKind.all, :id, :kind,										{include_blank: "Select type",
+							label: false,
+							input_html: {class: "form-control"}}) %>
 	<hr>
 	<%= f.simple_fields_for :tags do |tag| %>
 	   <%= render 'tag_fields', f: tag %>

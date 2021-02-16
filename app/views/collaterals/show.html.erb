@@ -1,15 +1,18 @@
 
 <div class="">
-	<h2>Title: <%= @collateral.name %></h2>
+	<h2>Name: <%= @collateral.name %></h2>
 	<hr>
 	<p>url: <%= @collateral.url %></p>
-	<p>Type: <%= @collateral.kind %></p>
+	<p>Type: <%= @collateral.collateral_kind.kind %></p>
 	<hr>
 	<h2>Tags: </h2>
-	<p>tag type: tag name:</p>
-	<% @collateral.tags.each do |t| %>
-	<p><%= t.name %> <%= t.kind %> </p>	
-	<% end %>
+	<% @collateral.tags.each do |tag| %>
+        <%= tag.name %>
+        <%= tag.tag_kind.kind %>
+        <hr>
+    <% end %>
+<br>
+
 
 
 	<%= link_to 'Edit', edit_collateral_path(@collateral) %> |

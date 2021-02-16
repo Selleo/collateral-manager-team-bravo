@@ -3,9 +3,8 @@ class CollateralsController < ApplicationController
   
   # GET /collaterals or /collaterals.json
 	def index
-		params[:search] ||= {query: ""} #set default query
+		params[:search] ||= {query: ''} #set default query
 	    @search = Search.new params.require(:search).permit(:query)
-	    # binding.pry
 	    @collaterals = @search.result
 	end
 	 # GET /collaterals/1 or /collaterals/1.json
@@ -60,15 +59,25 @@ class CollateralsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def collateral_params
+    # def collateral_params
+    #   params.require(:collateral).permit(:name,
+    #                                      :url, 
+    #                                      :kind,
+    #                                      tags_attributes: [:id,
+    #                                                        :name, 
+    #                                                        :kind,
+    #                                                        :_destroy
+    #                                                       ]
+    #                                     )
+    # end
+        def collateral_params
       params.require(:collateral).permit(:name,
                                          :url, 
-                                         :kind,
+                                         :collateral_kind_id,
                                          tags_attributes: [:id,
-                                                           :name, 
-                                                           :kind,
-                                                           :_destroy
-                                                          ]
+                                            :name,
+                                            :tag_kind_id,
+                                            :_destroy]
                                         )
     end
 end

@@ -3,7 +3,7 @@
 
 <%= link_to "Search", collaterals_path %>
 <%= link_to "New Collateral", new_collateral_path %>
-
+<%= link_to "Configuration Panel", configuration_path %>
 <table>
   <thead>
     <tr>
@@ -17,12 +17,12 @@
     <% @collaterals_all_items.each do |collateral| %>
       <tr>
         <td><%= collateral.name %></td>
-        <td><%= collateral.kind %></td>
+        <td><%= collateral.collateral_kind.kind %></td>
         <td><%= collateral.url %></td>
           <% collateral.tags.each do |tag| %>
             <td>
               <%= tag.name %>
-              <%= tag.kind %>
+              <%= tag.tag_kind.kind %>
             </td>
           <% end %>
 		<td><%= link_to 'Show', collateral %></td>

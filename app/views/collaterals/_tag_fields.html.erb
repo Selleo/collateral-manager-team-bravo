@@ -1,13 +1,12 @@
 <div class="nested-fields">
 	<%= f.label :name %>: 
 	<%= f.text_field :name %>
-	<%= f.label :kind %>: 
-	<%= f.input :kind, as: :select,
-							collection: ['Type1', 'Type2','Type3','Type4'],
-							include_blank: "Select type",
+	<%= f.label :kind %>:
+	<%= f.collection_select(:tag_kind_id, TagKind.all, :id, :kind,
+							{include_blank: "Select type",
 							label: false,
-							input_html: {class: "form-control"},
-							wrapper_html: {style: "width: 25%; display: inline;" } %>
+							input_html: {class: "form-control"}}) %>
+	
 	<%= link_to_remove_association 'Remove tag', f %>
    
 </div>

@@ -11,3 +11,4 @@ default: &default
 development:
   <<: *default
   database: collateral_manager_development
+

@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
 <div class="collaterals-search">
   <div class="collaterals-search__input-wrapper">
     <h1 class="collaterals-search__header">Search for collaterals</h1>
@@ -9,6 +10,29 @@
       <% end %>
     </div>
   </div>
+=======
+ <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Url</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collaterals.each do |collateral| %>
+      <tr>
+        <td><%= collateral.name %></td>
+        <td><%= collateral.collateral_kind.kind %></td>
+        <td><%= collateral.url %></td>
+          <% collateral.tags.each do |tag| %>
+            <td>
+              <%= tag.name %>
+              <%= tag.tag_kind.kind %>
+            </td>
+          <% end %>
+>>>>>>> 7f9eb19... Collateral and Tag kinds plus forms
 
   <div class="collaterals-search__all-results">
     <h1 class="collaterals-search__header">Results:</h1>
