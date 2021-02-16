@@ -70,13 +70,15 @@ class CollateralsController < ApplicationController
     #                                                       ]
     #                                     )
     # end
-        def collateral_params
+    def collateral_params
       params.require(:collateral).permit(:name,
                                          :url, 
                                          :collateral_kind_id,
-                                         tags_attributes: [:id,
-                                            :name,
+
+                                         collateral_tags_attributes: [:id,
+                                            :tag_name,
                                             :tag_kind_id,
+                                            :strength,
                                             :_destroy]
                                         )
     end
