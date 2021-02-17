@@ -4,6 +4,7 @@
 <%= link_to "Search", collaterals_path %>
 <%= link_to "New Collateral", new_collateral_path %>
 <%= link_to "Configuration Panel", configuration_path %>
+<%= paginate @collaterals_all_items ,outer_window: 3 %>
 <table>
   <thead>
     <tr>
@@ -32,4 +33,3 @@
     <% end %>
   </tbody>
 </table>
-<p>Find me in app/views/pages/home.html.erb</p>

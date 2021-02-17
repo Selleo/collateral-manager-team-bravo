@@ -3,7 +3,7 @@ class CollateralKindsController < ApplicationController
 
   # GET /collateral_kinds
   def index
-    @collateral_kinds = CollateralKind.all
+    @collateral_kinds = CollateralKind.page(params[:page])
   end
 
   # GET /collateral_kinds/1

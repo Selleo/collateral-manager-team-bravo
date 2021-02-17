@@ -3,7 +3,7 @@ class TagKindsController < ApplicationController
 
   # GET /tag_kinds
   def index
-    @tag_kinds = TagKind.all
+    @tag_kinds = TagKind.page(params[:page])
   end
 
   # GET /tag_kinds/1

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-  	@collaterals_all_items = Collateral.includes(:collateral_kind)
+  	@collaterals_all_items = Collateral.page(params[:page])
   end
 
   def configuration

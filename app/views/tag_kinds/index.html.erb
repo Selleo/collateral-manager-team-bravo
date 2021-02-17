@@ -1,11 +1,8 @@
-
-
-<h1>Tag Kinds</h1>
-
-<table>
+<%= paginate @tag_kinds ,outer_window: 3 %>
   <thead>
     <tr>
-      <th>Kind</th>
+      <th><strong>Available Tag Kinds:</strong>
+ <table></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +18,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Tag Kind', new_tag_kind_path %>
+<%= link_to 'Back', configuration_path %>

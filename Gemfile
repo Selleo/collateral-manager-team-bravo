@@ -62,6 +62,6 @@ end
 gem 'cocoon'
 #gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-rails'
-
+gem 'kaminari'
 
 gem 'rack-timeout', group: :production
