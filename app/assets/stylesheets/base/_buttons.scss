@@ -36,3 +36,20 @@ button,
     opacity: 0.5;
   }
 }
+
+.navigate-back {
+  margin-top: $m-lg;
+  background-color: #123456;
+
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+    background-color: #12345650
+  }
+}

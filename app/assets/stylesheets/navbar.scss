@@ -1,17 +1,19 @@
 .navbar {
   background-color: #12345615;
   padding: $m-base;
-  
+
   &__items {
     display: flex;
     justify-content: space-around;
-    font-size: 24px;
+    font-size: 16px;
   }
   
   &__single-item {
     a {
       color: black;
-      text-decoration: none;
+      &:hover {
+        color: #123456b9
+      }
     }
   }
 }
