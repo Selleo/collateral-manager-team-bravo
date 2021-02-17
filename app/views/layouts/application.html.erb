@@ -14,7 +14,6 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 <body>
-  <%= render "flashes" -%>
   <nav class="navbar">
     <ul class="navbar__items">
       <li class="navbar__single-item">
@@ -29,6 +28,7 @@
     </ul>
   </nav>
   <div style="max-width: 1200px; margin: 0 auto; padding: 36px">
+    <%= render "flashes" -%>
     <%= yield %>
   </div>
   <%= render "javascript" %>

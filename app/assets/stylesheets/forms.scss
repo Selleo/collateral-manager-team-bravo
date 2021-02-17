@@ -29,3 +29,26 @@
 .single-input {
   background-color: white;
 }
+
+.message-created {
+  background-color: rgba(173, 216, 230, 0.2);
+  padding: $m-md $m-lg $m-sm;
+  border-radius: $m-sm;
+  text-align: end;
+  font-size: 16px;
+
+  &__text {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  strong {
+    background-color: #123456;
+    color: white;
+    border-radius: $m-sm;
+    padding: $m-sm;
+    margin: 0 $m-sm;
+  }
+}
