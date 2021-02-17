@@ -4,7 +4,7 @@ class CollateralTag< ApplicationRecord
 	attr_accessor :tag_name, :tag_kind_id
 
 
-	before_validation do 
-		self.tag = Tag.create!(name: tag_name, tag_kind_id: tag_kind_id)
+	before_validation do
+		self.tag = Tag.find_or_create_by!(name: self.tag.name, tag_kind_id: tag_kind_id)
 	end
 end

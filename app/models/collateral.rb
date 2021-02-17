@@ -1,5 +1,5 @@
 class Collateral < ApplicationRecord
-	paginates_per 1
+	paginates_per 25
 	has_many :collateral_tags, inverse_of: :collateral, dependent: :destroy
 	has_many :tags, through: :collateral_tags
 	belongs_to :collateral_kind

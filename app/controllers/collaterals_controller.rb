@@ -5,20 +5,14 @@ class CollateralsController < ApplicationController
 	def index
 		params[:search] ||= {query: ''} #set default query
 	    @search = Search.new params.require(:search).permit(:query)
-	    @collaterals = @search.result.page(params[:page])
-      # sum_strength
       # binding.pry
+	    @search_results = @search.sorted_beu  
+      # sum_strength
 	end
 	 # GET /collaterals/1 or /collaterals/1.json
   def show
   end
 
-  def sum_strength
-    @collaterals.each do |collateral|
-      # binding.pry
-      @sum_of_strength = CollateralTag.all.where(collateral_id: collateral.id).pluck(:strength).compact.sum
-    end
-  end
   # GET /collaterals/new
   def new
     @collateral = Collateral.new
@@ -31,7 +25,7 @@ class CollateralsController < ApplicationController
   # POST /collaterals or /collaterals.json
   def create
     @collateral = Collateral.new(collateral_params)
-
+    # binding.pry
     respond_to do |format|
       if @collateral.save
         format.html { redirect_to @collateral, notice: "Collateral was successfully created." }
@@ -70,9 +64,9 @@ class CollateralsController < ApplicationController
       params.require(:collateral).permit(:name,
                                          :url, 
                                          :collateral_kind_id,
-
                                          collateral_tags_attributes: [:id,
                                             :tag_name,
+                                            :tag_id,
                                             :tag_kind_id,
                                             :strength,
                                             :_destroy]

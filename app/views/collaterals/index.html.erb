@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= paginate @collaterals ,outer_window: 3 %>
+
 <div class="collaterals-search">
   <div class="collaterals-search__input-wrapper">
     <h1 class="collaterals-search__header">Search for collaterals</h1>
@@ -12,18 +12,30 @@
 
   <div class="collaterals-search__all-results">
     <h1 class="collaterals-search__header">Results:</h1>
-    <% @collaterals.each do |collateral| %>
-      <div class="collaterals-search__single <%= collateral.tags.size >= params[:search][:query].split(',').size ? '-all-tags' : ''%>" >
-          <h1 class="collaterals-search__name"><%= collateral.name %></h1>
-          <h3 class="collaterals-search__kind"><%= collateral.collateral_kind.kind %></h3>
+    <% @search_results.each do |result| %>
+     
+      <div class="collaterals-search__single">
+        <!-- %= collateral.tags.size >= params[:search][:query].split(',').size ? '-all-tags' : ''% -->
+          <h1 class="collaterals-search__name"><%= result[:collateral].name %></h1>
+          <h3 class="collaterals-search__kind"><%= result[:collateral].collateral_kind.kind %></h3>
           <p class="collaterals-search__link">
-            <%= link_to "Link", collateral.url %>
+            <%= link_to "Link", result[:collateral].url %>
           </p>
           <div class="collaterals-search__tags">
-            <% collateral.tags.each do |tag| %>
-              <span class="collaterals-search__tag"><%= tag.tag_kind.kind %>: <%= tag.name %></span>
+            <% result[:collateral].tags.each do |tag| %>
+              <span class="collaterals-search__tag"><%= tag.tag_kind.kind %>: <%= tag.name %>
+              <% result[:collateral].collateral_tags.each do |coll_tag| %>
+                <% if coll_tag.tag_id == tag.id %>
+                  Weight: <%= coll_tag.strength %></span>
+                <% end %>
+
+              <% end %>
             <% end %>
           </div>
+          <%= link_to 'Show', result[:collateral] %>
+          <%= link_to 'Edit', edit_collateral_path(result[:collateral]) %>
+          <%= link_to 'Remove', result[:collateral], method: :delete, data: { confirm: 'Are you sure you want to remove this collateral?'} %>
+          <h3 class="collaterals-search__kind"> Total strength: <%= result[:strength] %></h3>
       </div>
     <% end %>
   </div>

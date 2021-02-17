@@ -9,6 +9,12 @@
 	<% @collateral.tags.each do |tag| %>
         <%= tag.name %>
         <%= tag.tag_kind.kind %>
+        <% @collateral.collateral_tags.each do |coll_tag| %>
+         	<% if coll_tag.tag_id == tag.id %>
+         		<p>Strength: <%= coll_tag.strength %></p>
+         	<% end %>
+
+        <% end %>
         <hr>
     <% end %>
 <br>
