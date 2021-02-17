@@ -1,19 +1,40 @@
+<button class="create-new">
+  <%= link_to "New Tag", new_tag_path %>
+</button>
+
 <%= paginate @tags ,outer_window: 3 %>
 
- <div class="collaterals-search__all-results">
-    <h1 class="collaterals-search__header">Results:</h1>
-    <% @tags.each do |tag| %>
-      <div class="collaterals-search__single" >
-          <h1 class="collaterals-search__name"><%= tag.name %></h1>
-          <h3 class="collaterals-search__kind"><%= tag.tag_kind.kind %></h3>
-           <div class="collaterals-search__tags">
-            <span class="collaterals-search__tag"><%= link_to 'Show', tag %></span>
-            <span class="collaterals-search__tag"><%= link_to 'Edit', edit_tag_path(tag) %></span>
-            <span class="collaterals-search__tag"><%= link_to 'Remove', tag, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-          </div>
-      </div>
-    <% end %>
-  </div>
+ <div>
+    <h1>Available Tags:</h1>
+    <table>
+      <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+      </colgroup>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td>
+            <strong><%= tag.name %></strong>
+          </td>
+          <td><%= tag.tag_kind.kind %></td>
+          <td>
+            <%= link_to 'Show', tag %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_tag_path(tag) %>
+          </td>
+          <td>
+            <%= link_to 'Remove', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+</div>
 
-<%= link_to "New Tag", new_tag_path %>
-<%= link_to 'Back', configuration_path %>
+<button class="navigate-back">
+  <%= link_to '← Back', configuration_path %>
+</button>
+

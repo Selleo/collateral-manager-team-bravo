@@ -37,7 +37,7 @@ button,
   }
 }
 
-.navigate-back {
+.navigate-back, .create-new {
   margin-top: $m-lg;
   background-color: #123456;
 
@@ -52,4 +52,9 @@ button,
   &:hover {
     background-color: #12345650
   }
+}
+
+.create-new {
+  margin-top: 0;
+  margin-bottom: $m-lg;
 }
