@@ -3,4 +3,5 @@ class Tag < ApplicationRecord
   has_many :collaterals, through: :collateral_tags
   belongs_to :tag_kind
   validates_presence_of :name
+  validates_uniqueness_of :name
 end

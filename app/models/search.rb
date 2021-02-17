@@ -1,7 +1,7 @@
 class Search
 	include ActiveModel::Model
 	attr_accessor :query
-
+	
 	def get
 		@query = :query
 	end

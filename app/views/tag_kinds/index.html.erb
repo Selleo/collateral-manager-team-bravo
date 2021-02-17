@@ -16,7 +16,7 @@
         <td><%= tag_kind.kind %></td>
         <td><%= link_to 'Show', tag_kind %></td>
         <td><%= link_to 'Edit', edit_tag_kind_path(tag_kind) %></td>
-        <td><%= link_to 'Destroy', tag_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', tag_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

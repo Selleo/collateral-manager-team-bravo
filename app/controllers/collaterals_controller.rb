@@ -6,11 +6,19 @@ class CollateralsController < ApplicationController
 		params[:search] ||= {query: ''} #set default query
 	    @search = Search.new params.require(:search).permit(:query)
 	    @collaterals = @search.result
+      # sum_strength
+      # binding.pry
 	end
 	 # GET /collaterals/1 or /collaterals/1.json
   def show
   end
 
+  def sum_strength
+    @collaterals.each do |collateral|
+      # binding.pry
+      @sum_of_strength = CollateralTag.all.where(collateral_id: collateral.id).pluck(:strength).compact.sum
+    end
+  end
   # GET /collaterals/new
   def new
     @collateral = Collateral.new
@@ -48,7 +56,7 @@ class CollateralsController < ApplicationController
   def destroy
     @collateral.destroy
     respond_to do |format|
-      format.html { redirect_to collaterals_url, notice: "Collateral was successfully removed." }
+      format.html { redirect_to root_url, notice: "Collateral was successfully removed." }
     end
   end
 
@@ -58,18 +66,6 @@ class CollateralsController < ApplicationController
       @collateral = Collateral.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    # def collateral_params
-    #   params.require(:collateral).permit(:name,
-    #                                      :url, 
-    #                                      :kind,
-    #                                      tags_attributes: [:id,
-    #                                                        :name, 
-    #                                                        :kind,
-    #                                                        :_destroy
-    #                                                       ]
-    #                                     )
-    # end
     def collateral_params
       params.require(:collateral).permit(:name,
                                          :url, 

@@ -6,5 +6,6 @@ class Collateral < ApplicationRecord
 	accepts_nested_attributes_for :collateral_tags, allow_destroy: true
 	validates_presence_of   :name,
 							:url
+	# validates_uniqueness_of :name, :url, :collateral_kind_id
 
 end

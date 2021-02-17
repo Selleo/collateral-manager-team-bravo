@@ -1,0 +1,8 @@
+<p>
+  <strong>Tag:</strong>
+  <%= @tag.name %>
+  <%= @tag.tag_kind.kind %>
+</p>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', configuration_path %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'configuration', to: 'pages#configuration'
   devise_for :users
   # get "/collaterals", to:"collateral#index"
+  resources :tags
   resources :tag_kinds
   resources :collaterals 
   resources :collateral_kinds

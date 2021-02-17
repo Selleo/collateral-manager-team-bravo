@@ -1,9 +1,9 @@
 <%= simple_form_for @collateral do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-	<%= f.label :name %>:
+	<%= f.label :name %>
 	<%= f.text_field :name, required: true %><br>
-	<%= f.label :url %>:
+	<%= f.label :url %>
 	<%= f.text_field :url %> <br>
 	<%= f.label :kind %>
  	<%= f.collection_select(:collateral_kind_id, CollateralKind.all, :id, :kind,										{include_blank: "Select type",
@@ -15,7 +15,7 @@
 	<% end %>
 	
 	<div class="links">
-		<%= link_to_add_association 'Add tags', f, :collateral_tags %>
+		<%= link_to_add_association 'Add tag', f, :collateral_tags %>
 	</div>
 			
 	<%= f.button :submit %>

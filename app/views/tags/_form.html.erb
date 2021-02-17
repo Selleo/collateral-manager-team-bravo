@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@tag) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.collection_select(:tag_kind_id, TagKind.all, :id, :kind,
+							{include_blank: "Select type",
+							label: false,
+							input_html: {class: "form-control"}}) %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

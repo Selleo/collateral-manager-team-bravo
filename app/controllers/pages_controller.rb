@@ -6,5 +6,7 @@ class PagesController < ApplicationController
   def configuration
   	@collateral_kind=CollateralKind.all
   	@tag_kind=TagKind.all
+  	@tags =Tag.all
+
   end
 end
