@@ -5,3 +5,27 @@
     margin: $m-sm 0;
   }
 }
+
+.submit-button {
+  margin-top: $m-lg;
+
+  input {
+    text-decoration: none;
+    color: white;
+    background-color: #123456;
+    &:hover {
+      color: white;
+      background-color: #12345650
+    }
+  }
+}
+
+.form-wrapper {
+  background-color: rgba(173, 216, 230, 0.2);
+  padding: $m-md $m-base;
+  border-radius: $m-sm;
+}
+
+.single-input {
+  background-color: white;
+}
