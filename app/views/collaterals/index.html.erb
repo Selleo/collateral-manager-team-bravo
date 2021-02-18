@@ -35,7 +35,7 @@
           <%= link_to 'Show', result[:collateral] %>
           <%= link_to 'Edit', edit_collateral_path(result[:collateral]) %>
           <%= link_to 'Remove', result[:collateral], method: :delete, data: { confirm: 'Are you sure you want to remove this collateral?'} %>
-          <h3 class="collaterals-search__kind"> Total strength: <%= result[:strength] %></h3>
+          <h4 class="collaterals-search__kind"> Total strength for matching tags: <%= result[:strength] %></h4>
       </div>
     <% end %>
   </div>

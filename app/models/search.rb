@@ -6,10 +6,7 @@ class Search
 		@query = :query
 	end
 	def result
-		string = @query
-		
-		clean_string = string.gsub(/[^0-9A-Za-z^,]/, '')
-		array = clean_string.split(',')
+		array = clean_string
 		where_query = ""
 		array.each do |item|
 			if !(array.last == item)
@@ -18,9 +15,13 @@ class Search
 				where_query<<"tags.name iLike '%#{item}%'"
 			end
 		end
-		Collateral.joins(:tags).where(where_query).group("collaterals.id")
+		build_query(where_query)
 	end
-	
+
+	def build_query(attrs)
+		Collateral.joins(:tags).where(attrs).group("collaterals.id")
+	end
+
 	def beu
 		result.map do |collateral|
 			
@@ -28,7 +29,6 @@ class Search
 			  :strength => sum_strength(collateral) 
 			}
 		end
-
 	end
 
 	def sorted_beu
@@ -36,10 +36,22 @@ class Search
 	end
 
 	def sum_strength(collateral)
-       CollateralTag.all.where(collateral_id: collateral.id).pluck(:strength).compact.sum
+		tags = clean_string
+		sum = 0
+		tags.each do |tag|
+			collateral.collateral_tags.each do |coll_tag|
+				if coll_tag.tag.name.downcase == tag
+					sum += coll_tag.strength.to_f
+				end
+			end
+		end
+		return sum
+	    # CollateralTag.all.where(collateral_id: collateral.id).pluck(:strength).compact.sum
     end
 
- #   	def strength_of_tag(collateral)
-
-	# end 
+    def clean_string
+    	string = @query
+		clean_string = string.gsub(/[^0-9A-Za-z^,]/, '')
+		clean_string.split(',')
+	end
 end
