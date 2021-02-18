@@ -3,7 +3,7 @@
 	<%= f.input :strength %>
 	<%= f.input :tag_id, collection: Tag.all%>
 	<%#= f.input :tag_name %>
-	<%= f.input :tag_kind_id, as: :select, collection: TagKind.all, selected: f.object.tag&.tag_kind&.id , label_method: :kind %>
+	<%= f.input :tag_kind_id, as: :select, collection: TagKind.all, selected: f.object.tag&.tag_kind&.id , label_method: :kind, prompt: "Select type" %>
 
 							
 		<div>

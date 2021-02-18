@@ -5,8 +5,8 @@ class Collateral < ApplicationRecord
 	belongs_to :collateral_kind
 	# accepts_nested_attributes_for :tags, allow_destroy: true
 	accepts_nested_attributes_for :collateral_tags, allow_destroy: true
-	validates_presence_of   :name,
-							:url
-	# validates_uniqueness_of :name, :url, :collateral_kind_id
+	validates :name, :url,  presence: true
+	validates :name, uniqueness: { scope: :url, case_sensitive: false }
+	
 
 end

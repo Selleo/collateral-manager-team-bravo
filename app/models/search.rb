@@ -40,7 +40,7 @@ class Search
        CollateralTag.all.where(collateral_id: collateral.id).pluck(:strength).compact.sum
     end
 
-   	def strength_of_tag(collateral)
+ #   	def strength_of_tag(collateral)
 
-	end 
+	# end 
 end

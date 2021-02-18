@@ -2,7 +2,9 @@
 <div class="">
 	<h2>Name: <%= @collateral.name %></h2>
 	<hr>
-	<p>url: <%= @collateral.url %></p>
+	   <p class="collaterals-search__link">
+           url: <%= link_to @collateral.url, @collateral.url %>
+          </p>
 	<p>Type: <%= @collateral.collateral_kind.kind %></p>
 	<hr>
 	<h2>Tags: </h2>
