@@ -25,7 +25,6 @@ class Search
 		result.map do |collateral|
 			
 			{ :collateral => collateral,
-			  # :tag_strength => strength_of_tag(collateral),		
 			  :strength => sum_strength(collateral) 
 			}
 		end
