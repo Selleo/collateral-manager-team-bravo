@@ -1,23 +1,37 @@
-<%= paginate @tag_kinds ,outer_window: 3 %>
-  <thead>
-    <tr>
-      <th><strong>Available Tag Kinds:</strong>
- <table></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<button class="create-new">
+  <%= link_to 'New Tag Kind', new_tag_kind_path %>
+</button>
 
-  <tbody>
-    <% @tag_kinds.each do |tag_kind| %>
-      <tr>
-        <td><%= tag_kind.kind %></td>
-        <td><%= link_to 'Show', tag_kind %></td>
-        <td><%= link_to 'Edit', edit_tag_kind_path(tag_kind) %></td>
-        <td><%= link_to 'Remove', tag_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New Tag Kind', new_tag_kind_path %>
-<%= link_to 'Back', configuration_path %>
+<%= paginate @tag_kinds ,outer_window: 3 %>
+
+<div>
+    <h1>Available Tag kinds:</h1>
+    <table>
+      <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+      </colgroup>
+      <% @tag_kinds.each do |tag_kind| %>
+        <tr>
+          <td>
+            <strong><%= tag_kind.kind %></strong>
+          </td>
+          <td>
+            <%= link_to 'Show', tag_kind %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_tag_kind_path(tag_kind) %>
+          </td>
+          <td>
+            <%= link_to 'Remove', tag_kind, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+</div>
+
+<button class="navigate-back">
+  <%= link_to '← Back', configuration_path %>
+</button>

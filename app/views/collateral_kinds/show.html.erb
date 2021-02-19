@@ -1,6 +1,12 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<div class="message-created">
+  <div class="message-created__text">
+    <span>Collateral kind</span>
+    <strong><%= @collateral_kind.kind %></strong>
+    <span>was created</span>
+  </div>
+  <%= link_to 'Edit', edit_collateral_kind_path(@collateral_kind) %>
+</div>
 
-<p>Type: <%= @collateral_kind.kind %></p>
-
-<%= link_to 'Edit', edit_collateral_kind_path(@collateral_kind) %> |
-<%= link_to 'Back', collateral_kinds_path %>
+<button class="navigate-back">
+  <%= link_to '← Back', tag_kinds_path %>
+</button>

@@ -14,9 +14,24 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 <body>
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
+  <nav class="navbar">
+    <ul class="navbar__items">
+      <li class="navbar__single-item">
+        <%= link_to "Search", collaterals_path %>
+      </li>
+      <li class="navbar__single-item">
+        <%= link_to "New Collateral", new_collateral_path %>
+      </li>
+      <li class="navbar__single-item">
+        <%= link_to "Configuration Panel", configuration_path %>
+      </li>
+    </ul>
+  </nav>
+  <div style="max-width: 1200px; margin: 0 auto; padding: 36px">
+    <%= render "flashes" -%>
+    <%= yield %>
+  </div>
+  <%#= render "javascript" %>
   <%= render "css_overrides" %>
 </body>
 </html>

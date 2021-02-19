@@ -1,8 +1,12 @@
-<p>
-  <strong>Tag:</strong>
-  <%= @tag.name %>
-  <%= @tag.tag_kind.kind %>
-</p>
+<div class="message-created">
+  <div class="message-created__text">
+    <span>Tag</span>
+    <strong><%= @tag.tag_kind.kind %>: <%= @tag.name %></strong>
+    <span>was created</span>
+  </div>
+  <%= link_to 'Edit', edit_tag_path(@tag) %>
+</div>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<button class="navigate-back">
+  <%= link_to '← Back', tags_path %>
+</button>

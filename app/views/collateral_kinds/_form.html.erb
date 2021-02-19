@@ -1,12 +1,15 @@
-<%= simple_form_for(@collateral_kind) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="form-wrapper">
+  <h1>New Collateral Kind</h1>
+  <%= simple_form_for(@collateral_kind) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :kind %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :kind, input_html: { class: "single-input" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="submit-button">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

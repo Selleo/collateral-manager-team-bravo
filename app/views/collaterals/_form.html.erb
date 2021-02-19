@@ -1,20 +1,24 @@
-<%= simple_form_for @collateral do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-	
-<div class="form-inputs">
-	<%= f.input :name, required: true %>
-	<%= f.input :url %>
-	<%= f.label :kind %>
-	<%= f.input  :collateral_kind_id, as: :select, collection: CollateralKind.all, selected: f.object&.collateral_kind&.id , label_method: :kind, prompt: "Select collateral type" %>
-	<%= f.simple_fields_for :collateral_tags do |collateral_tag| %>
-	   <%= render 'collateral_tag_fields', f: collateral_tag %>
-	<% end %>
-	
-	<div class="links">
-		<%= link_to_add_association 'Add tag', f, :collateral_tags %>
+<div class="form-wrapper">
+	<h1>New Collateral</h1>
+	<%= simple_form_for @collateral do |f| %>
+		<%= f.error_notification %>
+		<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+		
+	<div class="form-inputs">
+		<%= f.input :name, required: true, input_html: { class: "single-input" } %>
+		<%= f.input :url, input_html: { class: "single-input" } %>
+		<%= f.input  :collateral_kind_id, as: :select, collection: CollateralKind.all, selected: f.object&.collateral_kind&.id , label_method: :kind, prompt: "Select collateral type" %>
+		<%= f.simple_fields_for :collateral_tags do |collateral_tag| %>
+			<%= render 'collateral_tag_fields', f: collateral_tag %>
+		<% end %>
+		
+		<div class="add-tag-button">
+			<%= link_to_add_association 'Add tag', f, :collateral_tags %>
+		</div>
 	</div>
+	<div class="submit-button">
+		<%= f.button :submit %>
+	</div>
+	<% end %>
 </div>
-	<%= f.button :submit %>
-<% end %>
 

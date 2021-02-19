@@ -36,3 +36,31 @@ button,
     opacity: 0.5;
   }
 }
+
+.navigate-back, .create-new, .add-tag-button {
+  margin-top: $m-lg;
+  background-color: #123456;
+
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+    background-color: #12345650
+  }
+}
+
+.create-new {
+  margin-top: 0;
+  margin-bottom: $m-lg;
+}
+
+.add-tag-button {
+  border-radius: 4px;
+  width: fit-content;
+  padding: $m-sm $m-base;
+}
