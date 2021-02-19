@@ -1,11 +1,23 @@
 <%= paginate @collaterals_all_items ,outer_window: 3 %>
 <table>
+  <colgroup>
+    <col span="1" style="width: 30%;">
+    <col span="1" style="width: 20%;">
+    <col span="1" style="width: 10%;">
+    <col span="1" style="width: 20%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 5%;">
+  </colgroup>
   <thead>
     <tr>
       <th>Name</th>
       <th>Type</th>
       <th>Url</th>
       <th>Tags</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -13,16 +25,17 @@
       <tr>
         <td><%= collateral.name %></td>
         <td><%= collateral.collateral_kind.kind %></td>
-        <td><%= collateral.url %></td>
+        <td><%= link_to 'Link', collateral.url %></td>
+        <td>
           <% collateral.tags.each do |tag| %>
-            <td>
-              <%= tag.name %>
-              <%= tag.tag_kind.kind %>
-            </td>
+            <span class="collaterals-search__tag">
+              <%= tag.tag_kind.kind %>: <%= tag.name %>
+            </span>
           <% end %>
-		<td><%= link_to 'Show', collateral %></td>
-		<td><%= link_to 'Edit', edit_collateral_path(collateral) %></td>
-		<td><%= link_to 'Remove', collateral, method: :delete, data: { confirm: 'Are you sure you want to remove this collateral?'} %></td>
+        </td>
+        <td><%= link_to 'Show', collateral %></td>
+        <td><%= link_to 'Edit', edit_collateral_path(collateral) %></td>
+        <td><%= link_to 'Remove', collateral, method: :delete, data: { confirm: 'Are you sure you want to remove this collateral?'} %></td>
       </tr>
     <% end %>
   </tbody>
